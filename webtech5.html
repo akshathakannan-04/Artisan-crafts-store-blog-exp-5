@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshatha's Artisan Crafts</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #faf7ff;
+            color: #333;
+        }
+
+        header {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px #ddd;
+        }
+
+        header h2 {
+            color: #7745c7;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #444;
+            margin-left: 18px;
+            font-size: 14px;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #e9d9ff, #fff0e7);
+            padding: 45px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            margin-bottom: 12px;
+            color: #53318c;
+        }
+
+        .hero p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .hero-art {
+            font-size: 100px;
+            text-align: center;
+        }
+
+        button {
+            background: #7947e8;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5c30bb;
+        }
+
+        .section {
+            padding: 30px 7%;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: #7040c5;
+            margin-bottom: 8px;
+        }
+
+        .section p {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: left;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 7px #e8e2ef;
+        }
+
+        .craft-image {
+            background: #e6d8ff;
+            height: 125px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 65px;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card h3 {
+            color: #6036a8;
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .card p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .price {
+            color: #7542cf;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .card button {
+            width: 100%;
+        }
+
+        #cart {
+            background: #f0e8ff;
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        #cart h3 {
+            color: #6036a8;
+            margin-bottom: 10px;
+        }
+
+        #cart p {
+            margin: 8px 0;
+        }
+
+        #message {
+            margin-top: 12px;
+            color: #6036a8;
+            font-weight: bold;
+        }
+
+        .contact {
+            background: white;
+            padding: 30px 7%;
+            text-align: center;
+        }
+
+        .contact input, .contact textarea {
+            width: 100%;
+            max-width: 450px;
+            margin: 6px auto;
+            display: block;
+        }
+
+        footer {
+            background: #6036a8;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 5px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 420px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>🧶 Akshatha's Artisan Crafts</h2>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Crafts</a>
+            <a href="#contact">Contact</a>
+            <a href="#cart">Cart (<span id="cartCount">0</span>)</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div>
+            <h1>Handmade with Love,</h1>
+            <h2>Crafted with Creativity!</h2>
+            <p>
+                Discover beautiful handmade crafts created with
+                love, care and imagination.
+            </p>
+            <button onclick="showCrafts()">Explore Crafts</button>
+        </div>
+
+        <div class="hero-art">🧵 🧶 🎨</div>
+    </section>
+
+    <section class="section" id="products">
+        <h2>Our Handmade Collection 🛍️</h2>
+        <p>Explore unique crafts made just for you!</p>
+
+        <div class="filters">
+            <input type="text" id="search"
+                   placeholder="Search crafts..."
+                   onkeyup="filterCrafts()">
+
+            <select id="category" onchange="filterCrafts()">
+                <option value="All">All Crafts</option>
+                <option value="Decor">Home Decor</option>
+                <option value="Jewellery">Jewellery</option>
+                <option value="Art">Art & Gifts</option>
+            </select>
+        </div>
+
+        <div class="products" id="productList">
+
+            <div class="card" data-category="Decor">
+                <div class="craft-image">🏺</div>
+                <div class="card-content">
+                    <h3>Handmade Clay Pot</h3>
+                    <p>Beautiful clay pot for home decoration.</p>
+                    <div class="price">₹250</div>
+                    <button onclick="addToCart('Handmade Clay Pot', 250)">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" data-category="Jewellery">
+                <div class="craft-image">📿</div>
+                <div class="card-content">
+                    <h3>Beaded Necklace</h3>
+                    <p>Colourful handmade jewellery for every occasion.</p>
+                    <div class="price">₹180</div>
+                    <button onclick="addToCart('Beaded Necklace', 180)">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" data-category="Art">
+                <div class="craft-image">🖼️</div>
+                <div class="card-content">
+                    <h3>Canvas Painting</h3>
+                    <p>Creative artwork to brighten your space.</p>
+                    <div class="price">₹450</div>
+                    <button onclick="addToCart('Canvas Painting', 450)">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" data-category="Decor">
+                <div class="craft-image">🕯️</div>
+                <div class="card-content">
+                    <h3>Decorative Candle</h3>
+                    <p>Handcrafted candles for a cosy atmosphere.</p>
+                    <div class="price">₹150</div>
+                    <button onclick="addToCart('Decorative Candle', 150)">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" data-category="Jewellery">
+                <div class="craft-image">💍</div>
+                <div class="card-content">
+                    <h3>Handmade Bracelet</h3>
+                    <p>A lovely bracelet made with colourful beads.</p>
+                    <div class="price">₹120</div>
+                    <button onclick="addToCart('Handmade Bracelet', 120)">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" data-category="Art">
+                <div class="craft-image">🎁</div>
+                <div class="card-content">
+                    <h3>Handmade Gift Box</h3>
+                    <p>A special gift box for your loved ones.</p>
+                    <div class="price">₹200</div>
+                    <button onclick="addToCart('Handmade Gift Box', 200)">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="message"></div>
+
+        <div id="cart">
+            <h3>🛒 Your Shopping Cart</h3>
+            <div id="cartItems">Your cart is empty.</div>
+            <p><strong>Total: ₹<span id="total">0</span></strong></p>
+            <button onclick="clearCart()">Clear Cart</button>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us 💌</h2>
+        <p>Have a question? Send us a message!</p>
+
+        <form onsubmit="sendMessage(event)">
+            <input type="text" id="customerName"
+                   placeholder="Your Name" required>
+
+            <input type="email" id="customerEmail"
+                   placeholder="Your Email" required>
+
+            <textarea id="customerMessage"
+                      placeholder="Your Message"
+                      rows="4" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div id="contactMessage"></div>
+    </section>
+
+    <footer>
+        <p>© 2026 Akshatha's Artisan Crafts | Handmade with Love ❤️</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function showCrafts() {
+            document.getElementById("products").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        function addToCart(name, price) {
+            cart.push({name: name, price: price});
+            total += price;
+
+            document.getElementById("cartCount").innerText = cart.length;
+            document.getElementById("total").innerText = total;
+
+            let output = "";
+
+            cart.forEach(function(item, index) {
+                output += "<p>" + (index + 1) + ". " +
+                    item.name + " - ₹" + item.price + "</p>";
+            });
+
+            document.getElementById("cartItems").innerHTML = output;
+            document.getElementById("message").innerText =
+                name + " added to your cart!";
+        }
+
+        function clearCart() {
+            cart = [];
+            total = 0;
+
+            document.getElementById("cartCount").innerText = 0;
+            document.getElementById("total").innerText = 0;
+            document.getElementById("cartItems").innerText =
+                "Your cart is empty.";
+            document.getElementById("message").innerText =
+                "Your cart has been cleared.";
+        }
+
+        function filterCrafts() {
+            let search = document.getElementById("search")
+                .value.toLowerCase();
+
+            let category = document.getElementById("category").value;
+            let cards = document.querySelectorAll(".card");
+
+            cards.forEach(function(card) {
+                let name = card.querySelector("h3")
+                    .innerText.toLowerCase();
+
+                let matchesName = name.includes(search);
+                let matchesCategory =
+                    category === "All" ||
+                    card.dataset.category === category;
+
+                card.style.display =
+                    matchesName && matchesCategory ? "block" : "none";
+            });
+        }
+
+        function sendMessage(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("customerName").value;
+
+            document.getElementById("contactMessage").innerText =
+                "Thank you, " + name + "! Your message has been received.";
+
+            event.target.reset();
+        }
+    </script>
+
+</body>
+</html>
